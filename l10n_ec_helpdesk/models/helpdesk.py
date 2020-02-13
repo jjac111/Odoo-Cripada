@@ -11,8 +11,8 @@ class HelpdeskTicket(models.Model):
     # ---------------------
     # DEFINICION DE CAMPOS
     # ---------------------
-    #nombre = fields.Char(string="Nombre", help="Nombre")
-    # nombre_ticket = fields.Char(string="Nombre", help="Nombre del ticket")
+      nombre = fields.Char(string="Nombre", help="Nombre")
+      nombre_ticket = fields.Char(string="Nombre", help="Nombre del ticket")
 
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     # –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -24,7 +24,7 @@ class HelpdeskTicket(models.Model):
 								+ ' | ' + str('' if not self.partner_id.name else self.partner_id.name) \
 								+ ' | ' + str('' if not self.ticket_type_id.name else self.ticket_type_id.name)
         
-		#self.nombre = self.name
+		sself.nombre = self.name
 
 
 class PurchaseOrder(models.Model):
