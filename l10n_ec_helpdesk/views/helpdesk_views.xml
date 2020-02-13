@@ -7,9 +7,7 @@
             <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
             <field name="arch" type="xml">
 
-                <xpath expr="//field[@name='name']" position="after">
-                    <field name="nombre" readonly="1" force_save="1"/>
-                </xpath>
+                
 
                 
 
