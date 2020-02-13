@@ -19,7 +19,9 @@ class HelpdeskTicket(models.Model):
     @api.onchange('nombre_ticket', 'partner_id', 'ticket_type_id')
     def _nombre_ticket(self):
 		
-        self.name = self.name = str(self._origin.create_date).split()[0] + ' | ' + str('' if not self.partner_id.name else self.partner_id.name) + ' | ' + str('' if not self.ticket_type_id.name else self.ticket_type_id.name)
+        self.name = self.name = str(fields.Datetime.now).split[0] if not str(self._origin.create_date).split()[0] else str(self._origin.create_date).split()[0] \
+								+ ' | ' + str('' if not self.partner_id.name else self.partner_id.name) \
+								+ ' | ' + str('' if not self.ticket_type_id.name else self.ticket_type_id.name)
         self.nombre = self.name
 
 
