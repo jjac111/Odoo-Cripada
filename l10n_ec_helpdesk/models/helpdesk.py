@@ -10,17 +10,15 @@ class HelpdeskTicket(models.Model):
     # ---------------------
     # DEFINICION DE CAMPOS
     # ---------------------
-    nombre = fields.Char(string="Nombre", help="Nombre")
-    nombre_ticket = fields.Char(string="Nombre", help="Nombre del ticket")
-
+    nombre = fields.Char(string="Nombre", help="Nombre del ticket")
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     # –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-    @api.onchange('nombre_ticket', 'partner_id', 'ticket_type_id')
+    @api.onchange('partner_id', 'ticket_type_id')
     def _nombre_ticket(self):
 
-        self.name = str(self.nombre_ticket) + '-' + str(self.partner_id.name) + '-' + str(self.ticket_type_id.name)
-        self.nombre = self.name
+        self.name = str(self.create_date).split()[0] + ' - ' + str('' if not self.partner_id.name else self.partner_id.name) + ' - ' + str('' if not self.ticket_type_id.name else self.ticket_type_id.name)
+        nombre = fields.Char(string="Nombre", help="Nombre")
 
 
 class PurchaseOrder(models.Model):
