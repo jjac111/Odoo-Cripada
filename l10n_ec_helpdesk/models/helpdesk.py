@@ -6,7 +6,7 @@ from datetime import date
 
 
 class HelpdeskTicket(models.Model):
-    _inherit = 'helpdesk.ticket'
+	_inherit = 'helpdesk.ticket'
 
     # ---------------------
     # DEFINICION DE CAMPOS
@@ -16,9 +16,9 @@ class HelpdeskTicket(models.Model):
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     # –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-    @api.onchange('partner_id', 'ticket_type_id')
-    def _nombre_ticket(self):
-
+	@api.onchange('partner_id', 'ticket_type_id')
+	def _nombre_ticket(self):
+	
 		self.name = str(date.today()).split[0] if not str(self._origin.create_date).split()[0] else str(self._origin.create_date).split()[0] + ' | ' + str('' if not self.partner_id.name else self.partner_id.name) + ' | ' + str('' if not self.ticket_type_id.name else self.ticket_type_id.name)
 								
 		
