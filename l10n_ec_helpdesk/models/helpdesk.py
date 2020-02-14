@@ -25,11 +25,9 @@ class HelpdeskTicket(models.Model):
 								+ ' | ' + str('' if not self.partner_id.name else self.partner_id.name) \
 								+ ' | ' + str('' if not self.ticket_type_id.name else self.ticket_type_id.name)
         
-		sself.nombre = self.name
+		self.nombre = self.name
 
 
-        self.name = str(self.nombre_ticket) + '-' + str(self.partner_id.name) + '-' + str(self.ticket_type_id.name)
-        self.nombre = self.name
 
 
 
