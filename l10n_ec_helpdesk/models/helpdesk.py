@@ -11,7 +11,7 @@ class HelpdeskTicket(models.Model):
     # ---------------------
     # DEFINICION DE CAMPOS
     # ---------------------
-	nombre = fields.Char(string="Nombre", help="Nombre")
+		nombre = fields.Char(string="Nombre", help="Nombre")
 	nombre_ticket = fields.Char(string="Nombre", help="Nombre del ticket")
 
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
