@@ -58,7 +58,12 @@ class PurchaseOrder(models.Model):
     # ---------------------
     # DEFINICION DE CAMPOS
     # ---------------------
-	
+	x_studio_cliente_final = fields.many2one(
+		'res.partner',
+		string='Cliente Final',
+		help='Contacto de cliente al cual realizar entrega.',
+		store=True,
+	)
 	
     partner_ref_new = fields.many2one(
         'helpdesk.ticket',
@@ -85,7 +90,7 @@ class StockPicking(models.Model):
     # DEFINICION DE CAMPOS
     # ---------------------
 	x_studio_cliente_final = fields.many2one(
-		'res.parter',
+		'res.partner',
 		string='Cliente Final',
 		help='Contacto de cliente al cual realizar entrega.',
 		store=True,
