@@ -12,6 +12,31 @@ class HelpdeskTicket(models.Model):
     # DEFINICION DE CAMPOS
     # ---------------------
 	
+	x_datetime_en_proceso = fields.datetime(
+		string='Fecha de inicio En Proceso',
+		store=True,
+	)
+	x_datetime_por_confirmar = fields.datetime(
+		string='Fecha de inicio Por Confirmar',
+		store=True,
+	)
+	x_datetime_resuelto = fields.datetime(
+		string='Fecha de inicio Resuelto',
+		store=True,
+	)
+	
+	x_sla_failed_notify = fields.boolean(
+		string='Notificado por SLA fallado',
+		store=True,
+	)
+	x_sla_over_failed_notify = fields.boolean(
+		string='Notificado por SLA sobre fallado',
+		store=True,
+	)
+	x_sla_to_fail_notify = fields.boolean(
+		string='Notificado por SLA por fallar',
+		store=True,
+	)
 
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     # –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -33,6 +58,13 @@ class PurchaseOrder(models.Model):
     # ---------------------
     # DEFINICION DE CAMPOS
     # ---------------------
+	x_studio_cliente_final = fields.Many2one(
+		'res.parter',
+		string='Cliente Final',
+		help='Contacto de cliente al cual realizar entrega.',
+		store=True,
+	)
+	
     partner_ref_new = fields.Many2one(
         'helpdesk.ticket',
         string='Ticket',
@@ -47,3 +79,23 @@ class PurchaseOrder(models.Model):
     def _vendor_ref(self):
 
         self.partner_ref = str(self.partner_ref_new.name) + ' (#' + str(self.partner_ref_new.id) + ')'
+		
+		
+
+
+class StockPicking(models.Model):
+	_inherit = "stock.picking"
+	
+	# ---------------------
+    # DEFINICION DE CAMPOS
+    # ---------------------
+	x_studio_cliente_final = fields.Many2one(
+		'res.parter',
+		string='Cliente Final',
+		help='Contacto de cliente al cual realizar entrega.',
+		store=True,
+	)
+
+    # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+    # –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
+    # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
