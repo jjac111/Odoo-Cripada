@@ -24,7 +24,6 @@
         'base',
         'helpdesk',
         'purchase',
-		'stock',
     ],
 
     # always loaded
