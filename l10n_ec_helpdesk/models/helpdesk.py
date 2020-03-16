@@ -12,6 +12,12 @@ class HelpdeskTicket(models.Model):
     # DEFINICION DE CAMPOS
     # ---------------------
     
+	x_studio_ticket_asociado = fields.Many2one(
+		'helpdesk.ticket',
+		string='Ticket Asociado',
+		store='True',
+	)
+	
     x_datetime_en_proceso = fields.Datetime(
         string='Fecha de inicio En Proceso',
         store=True,

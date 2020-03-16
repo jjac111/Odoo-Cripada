@@ -12,6 +12,10 @@
                 <xpath expr="//form[1]/sheet[1]/div[not(@name)][1]/h1[1]/field[@name='name']" position="attributes">
                     <attribute name="readonly">0</attribute>
                 </xpath>
+				
+				<xpath expr="//field[@name='ticket_type_id']" position="after">
+                    <field name="x_studio_ticket_asociado" widget="selection"/>
+                </xpath>
 
             </field>
         </record>
