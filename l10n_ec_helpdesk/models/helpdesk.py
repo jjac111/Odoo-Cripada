@@ -12,7 +12,7 @@ class HelpdeskTicket(models.Model):
     # DEFINICION DE CAMPOS
     # ---------------------
     
-	x_studio_ticket_asociado = fields.Many2one(
+    x_studio_ticket_asociado = fields.Many2one(
 		'helpdesk.ticket',
 		string='Ticket Asociado',
 		store='True',
