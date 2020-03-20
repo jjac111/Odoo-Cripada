@@ -108,3 +108,25 @@ class StockPicking(models.Model):
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     # –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
     # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+	
+	@api.onchange('state')
+	def _send_message(self):
+		
+		body = "Realizar el adjunto del documento: "
+		
+		tipo_operacion = self.picking_type_id.name
+		
+		if 'Ingreso' in tipo_operacion:
+			body += "Registro de Ingreso de Productos"
+		elif 'Muestreo' in tipo_operacion:
+			body += "Formato para Registro de Muestreo de Productos Recibidos"
+		elif 'Cliente Final' in tipo_operacion:
+			body += "Acuse de Recibo de Productos"
+		elif:
+			body = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		
+		return {
+			'warning': {
+			'title': 'No olvides documentos a adjuntar!',
+			'message': body}
+		}
