@@ -43,6 +43,11 @@ class HelpdeskTicket(models.Model):
 		string='Notificado por SLA por fallar',
 		store=True,
 	)
+	
+	x_rating_notify = fields.Boolean(
+		string='Notificado por calificación de ticket',
+		store=True,
+	)
 
 	# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	# –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
