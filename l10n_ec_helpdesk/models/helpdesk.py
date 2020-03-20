@@ -49,21 +49,16 @@ class HelpdeskTicket(models.Model):
 		store=True,
 	)
 	
-	x_ticket_type = fields.Char(
-		string='Tipo de ticket',
-		store=True,
-	)
+	
 
 	# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	# –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-	@api.onchange('partner_id', 'ticket_type_id', 'stage_id')
+	@api.onchange('partner_id', 'ticket_type_id')
 	def _nombre_ticket(self):
 		
-		if self.ticket_type_id.name:
-			self.x_ticket_type = self.ticket_type_id.name
 			
-		self.name = str('' if not self.partner_id.name else self.partner_id.name) + ' | ' + str('' if not self.x_ticket_type else self.x_ticket_type) + ' | ' + str(self.stage_id.name)
+		self.name = str('' if not self.partner_id.name else self.partner_id.name) + ' | ' + str('' if not self.ticket_type_id.name else self.ticket_type_id.name)
 								
 		
 
