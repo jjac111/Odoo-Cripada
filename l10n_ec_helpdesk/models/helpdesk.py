@@ -109,16 +109,12 @@ class StockPicking(models.Model):
 	# –––––––––––––––––––––––––––––––––––––––––––––––––––––– @api ––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	
-	@api.onchange('state')
+	@api.onchange('write_date')
 	def _send_message(self):
 		
 		body = "Realizar el adjunto del documento: "
 		
 		tipo_operacion = self.picking_type_id.name
-		
-		print('\n\n\n\n')
-		print(tipo_operacion)
-		print('\n\n\n\n')
 		
 		if 'Ingreso' in tipo_operacion:
 			body += "Registro de Ingreso de Productos"
