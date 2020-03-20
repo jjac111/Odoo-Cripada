@@ -122,7 +122,7 @@ class StockPicking(models.Model):
 			body += "Formato para Registro de Muestreo de Productos Recibidos"
 		elif 'Cliente Final' in tipo_operacion:
 			body += "Acuse de Recibo de Productos"
-		elif:
+		else:
 			body = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 		
 		return {
