@@ -116,6 +116,10 @@ class StockPicking(models.Model):
 		
 		tipo_operacion = self.picking_type_id.name
 		
+		print('\n\n\n\n')
+		print(tipo_operacion)
+		print('\n\n\n\n')
+		
 		if 'Ingreso' in tipo_operacion:
 			body += "Registro de Ingreso de Productos"
 		elif 'Muestreo' in tipo_operacion:
