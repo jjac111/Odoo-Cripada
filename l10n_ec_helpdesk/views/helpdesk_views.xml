@@ -32,6 +32,34 @@
 
             </field>
         </record>
+		
+		<record id="view_employee_form" model="ir.ui.view">
+			<field name="name">product.caracteristicas.form</field>
+			<field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+			<field name="arch" type="xml">
+			
+				<xpath expr="//field[@name='name']" position="after">
+                    <field name="owner_id" widget="many2one"/>
+                </xpath>
+				
+				<xpath expr="//page[@string='General Information']" position='after'>
+					<page string='Características'>
+						<field name="x_pvp" widget="monetary"/>
+						<field name="x_unidad_principal" widget="selection"/>
+						<field name="x_unidad_secundaria" widget="selection"/>
+						<field name="x_familia" widget="selection"/>
+						<field name="x_coeficiente" widget="float"/>
+						<field name="x_unidades_por_empaque" widget="float"/>
+						<field name="x_empaques_por_pallet" widget="integer"/>
+						<field name="x_registro_nacional" widget="char"/>
+						<field name="x_peso_empaque" widget="float"/>
+						<field name="x_volumen_empaque" widget="float"/>
+						
+					</page>
+				</xpath>
+			</field>
+		</record>
 
     </data>
 </odoo>

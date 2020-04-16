@@ -93,6 +93,76 @@ class ProductTemplate(models.Model):
 		store=True,
 	)
 	
+	x_pvp = fields.Monetary(
+		string='PVP',
+		store=True,
+	)
+	
+	x_unidad_principal = fields.Selection(
+		[
+		('TAM', 'Tambor'),
+		('CAN', 'Caneca'),
+		('CAJ', 'Caja'),
+		('FCO', 'Frasco'),
+		('FUN', 'Funda'),
+		('SAC', 'Saco'),
+		('GAL', 'Galón'),
+		('IBC', 'IBC'),
+		('CUÑ', 'CUÑETE')],
+		string='Unidad Principal (Presentación)'
+		store=True,
+	)
+	
+	x_unidad_secundaria = fields.Selection(
+		[
+		('Kg', 'Kilogramos'),
+		('Lt', 'Litros'),
+		('g', 'gramos'),
+		('Gl', 'Galón')],
+		string='Unidad Secundaria'
+		store=True,
+	)
+	
+	x_familia = fields.Selection(
+		[
+		('INSECTICIDA', 'Insecticida'),
+		('HERBICIDA', 'Herbicida'),
+		('ALCALICIDA', 'Alcalicida'),
+		('PINTURA', 'Pintura')],
+		string='Familia'
+		store=True,
+	)
+	
+	x_coeficiente = fields.Float(
+		string='Coeficiente',
+		store=True,
+	)
+	
+	x_unidades_por_empaque = fields.Float(
+		string= 'Unidades por Empaque',
+		store=True,
+	)
+	
+	x_empaques_por_pallet = fields.Integer(
+		string= 'Empaques por Pallet',
+		store=True,
+	)
+	
+	x_registro_nacional = fields.Char(
+		string= 'No. Registro Nacional',
+		store=True,
+	)
+	
+	x_peso_empaque = fields.Float(
+		string= 'Peso por Empaque (Kg)',
+		store=True,
+	)
+	
+	x_volumen_empaque = fields.Float(
+		string= 'Volumen por Empaque (m3)',
+		store=True,
+	)
+	
 	
 
 	# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
