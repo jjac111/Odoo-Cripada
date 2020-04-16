@@ -36,20 +36,22 @@
 				<xpath expr="//page[@name='general_information']" position='after'>
 					<page string='Características'>
 						<group>
-							<field name="x_unidad_principal" widget="selection"/>
-							<field name="x_unidad_secundaria" widget="selection"/>
-							<field name="x_familia" widget="selection"/>
-						<group>
-						</group>
-							<field name="x_coeficiente" widget="float"/>
-							<field name="x_unidades_por_empaque" widget="float"/>
-							<field name="x_empaques_por_pallet" widget="integer"/>
-							<field name="x_peso_empaque" widget="float"/>
-							<field name="x_volumen_empaque" widget="float"/>
-						<group>
-						</group>
-							<field name="x_registro_nacional" widget="char"/>
-							<field name="x_pvp" widget="monetary"/>
+							<group name="selecciones">
+								<field name="x_unidad_principal" widget="selection"/>
+								<field name="x_unidad_secundaria" widget="selection"/>
+								<field name="x_familia" widget="selection"/>
+							<group>
+							</group name="empaques">
+								<field name="x_coeficiente" widget="float"/>
+								<field name="x_unidades_por_empaque" widget="float"/>
+								<field name="x_empaques_por_pallet" widget="integer"/>
+								<field name="x_peso_empaque" widget="float"/>
+								<field name="x_volumen_empaque" widget="float"/>
+							<group>
+							</group name="otros">
+								<field name="x_registro_nacional" widget="char"/>
+								<field name="x_pvp" widget="monetary"/>
+							</group>
 						</group>
 					</page>
 				</xpath>
