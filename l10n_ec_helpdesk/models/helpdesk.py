@@ -91,6 +91,7 @@ class ProductTemplate(models.Model):
 		string='Cliente Empresa',
 		help='Contacto de cliente al cual le pertenece el manejo de este producto.',
 		store=True,
+		required=True
 	)
 	
 	x_pvp = fields.Monetary(
@@ -108,9 +109,10 @@ class ProductTemplate(models.Model):
 		('SAC', 'Saco'),
 		('GAL', 'Galón'),
 		('IBC', 'IBC'),
-		('CUÑ', 'CUÑETE')],
+		('CUÑ', 'Cuñete')],
 		string='Unidad Principal (Presentación)',
 		store=True,
+		required=True
 	)
 	
 	x_unidad_secundaria = fields.Selection(
@@ -121,31 +123,38 @@ class ProductTemplate(models.Model):
 		('Gl', 'Galón')],
 		string='Unidad Secundaria',
 		store=True,
+		required=True
 	)
 	
 	x_familia = fields.Selection(
 		[
 		('INSECTICIDA', 'Insecticida'),
+		('FUNGICIDA', 'Fungicida'),
 		('HERBICIDA', 'Herbicida'),
 		('ALCALICIDA', 'Alcalicida'),
-		('PINTURA', 'Pintura')],
+		('PINTURA', 'Pintura'),
+		('OTRO', 'Otro')],
 		string='Familia',
 		store=True,
+		required=True
 	)
 	
 	x_coeficiente = fields.Float(
 		string='Coeficiente',
 		store=True,
+		required=True
 	)
 	
 	x_unidades_por_empaque = fields.Float(
 		string= 'Unidades por Empaque',
 		store=True,
+		required=True
 	)
 	
 	x_empaques_por_pallet = fields.Integer(
 		string= 'Empaques por Pallet',
 		store=True,
+		required=True
 	)
 	
 	x_registro_nacional = fields.Char(
@@ -156,11 +165,13 @@ class ProductTemplate(models.Model):
 	x_peso_empaque = fields.Float(
 		string= 'Peso por Empaque (Kg)',
 		store=True,
+		required=True
 	)
 	
 	x_volumen_empaque = fields.Float(
 		string= 'Volumen por Empaque (m3)',
 		store=True,
+		required=True
 	)
 	
 	
