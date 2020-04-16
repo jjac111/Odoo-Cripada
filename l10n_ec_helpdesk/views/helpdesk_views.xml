@@ -43,7 +43,7 @@
                     <field name="owner_id" widget="many2one"/>
                 </xpath>
 				
-				<xpath expr="//page[@string='general_information']" position='after'>
+				<xpath expr="//page[@name='general_information']" position='after'>
 					<page string='Características'>
 						<field name="x_pvp" widget="monetary"/>
 						<field name="x_unidad_principal" widget="selection"/>
