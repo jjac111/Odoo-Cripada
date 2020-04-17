@@ -193,6 +193,7 @@ class MRP(models.Model):
 		string='Ticket',
 		help='Ticket de servicio creado en Helpdesk',
 		store=True,
+		required=True
 	)
 	
 	
