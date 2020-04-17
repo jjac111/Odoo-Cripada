@@ -181,4 +181,19 @@ class ProductTemplate(models.Model):
 	# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 	
 	
+class MRP(models.Model):
+	_inherit = "mrp.production"
+	
+	# ---------------------
+	# DEFINICION DE CAMPOS
+	# ---------------------
+	
+	helpdesk_ticket = fields.Many2one(
+		'helpdesk.ticket',
+		string='Ticket',
+		help='Ticket de servicio creado en Helpdesk',
+		store=True,
+	)
+	
+	
 	

@@ -57,6 +57,20 @@
 				</xpath>
 			</field>
 		</record>
+		
+		
+		<record id="mrp_production_form_new" model="ir.ui.view">
+            <field name="name">mrp.production.form.new</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.production_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='routing_id']" position="after">
+                    <field name="helpdesk_ticket" widget="many2one"/>
+                </xpath>
+
+            </field>
+        </record>
 
     </data>
 </odoo>
