@@ -109,7 +109,8 @@ class ProductTemplate(models.Model):
 		('SAC', 'Saco'),
 		('GAL', 'Galón'),
 		('IBC', 'IBC'),
-		('CUÑ', 'Cuñete')],
+		('CUÑ', 'Cuñete'),
+		('UND', 'Unidad'],
 		string='Unidad Principal (Presentación)',
 		store=True,
 		required=True
@@ -118,9 +119,12 @@ class ProductTemplate(models.Model):
 	x_unidad_secundaria = fields.Selection(
 		[
 		('Kg', 'Kilogramos'),
-		('Lt', 'Litros'),
+		('K', 'Kilo'),
 		('g', 'gramos'),
-		('Gl', 'Galón')],
+		('lb', 'Libra'),
+		('Lt', 'Litros'),
+		('ml', 'Mililitros')
+		('Gl', 'Galón'),],
 		string='Unidad Secundaria',
 		store=True,
 		required=True
