@@ -123,7 +123,7 @@ class ProductTemplate(models.Model):
 		('g', 'gramos'),
 		('lb', 'Libra'),
 		('Lt', 'Litros'),
-		('ml', 'Mililitros')
+		('ml', 'Mililitros'),
 		('Gl', 'Galón'),],
 		string='Unidad Secundaria',
 		store=True,
