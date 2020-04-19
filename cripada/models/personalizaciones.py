@@ -110,7 +110,7 @@ class ProductTemplate(models.Model):
 		('GAL', 'Galón'),
 		('IBC', 'IBC'),
 		('CUÑ', 'Cuñete'),
-		('UND', 'Unidad'],
+		('UND', 'Unidad')],
 		string='Unidad Principal (Presentación)',
 		store=True,
 		required=True
