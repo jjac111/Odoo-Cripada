@@ -3,7 +3,7 @@
     'name': "Cripada - MRP",
 
     'summary': """
-        Módulo de personalizaciones de Helpdesk, Purchase, Sale, MRP, y Stock para Cripada S.A.""",
+        Módulo de personalizaciones de MRP para Cripada S.A.""",
 
     'description': """
         Este módulo incopora las personalizaciones requeridas por Cripada para el funcionamiento de Odoo.
