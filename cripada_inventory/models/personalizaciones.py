@@ -94,7 +94,7 @@ class ProductTemplate(models.Model):
 		string='Cliente Empresa',
 		help='Contacto de cliente al cual le pertenece el manejo de este producto.',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_pvp = fields.Monetary(
@@ -116,7 +116,7 @@ class ProductTemplate(models.Model):
 		('UND', 'Unidad')],
 		string='Unidad Principal (Presentación)',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_unidad_secundaria = fields.Selection(
@@ -130,7 +130,7 @@ class ProductTemplate(models.Model):
 		('Gl', 'Galón'),],
 		string='Unidad Secundaria',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_familia = fields.Selection(
@@ -179,7 +179,7 @@ class ProductTemplate(models.Model):
 		],
 		string='Familia',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_tipo_empaque = fields.Selection(
@@ -214,7 +214,7 @@ class ProductTemplate(models.Model):
 		],
 		string='Tipo de Empaque',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_color_franja = fields.Selection(
@@ -226,19 +226,19 @@ class ProductTemplate(models.Model):
 		],
 		string= 'Color de Franja',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_peso_bruto = fields.Float(
 		string='Peso Bruto (Kg)',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_peso_neto = fields.Float(
 		string='Peso Neto (Kg)',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_total_peso_pallet = fields.Float(
@@ -250,19 +250,19 @@ class ProductTemplate(models.Model):
 	x_coeficiente = fields.Float(
 		string='Coeficiente',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_unidades_por_empaque = fields.Float(
 		string= 'Unidades por Empaque',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_empaques_por_pallet = fields.Integer(
 		string= 'Empaques por Pallet',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_registro_nacional = fields.Char(
@@ -273,13 +273,13 @@ class ProductTemplate(models.Model):
 	x_peso_empaque = fields.Float(
 		string= 'Peso por Empaque / Peso Bruto (Kg)',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	x_volumen_empaque = fields.Float(
 		string= 'Volumen por Empaque (m3)',
 		store=True,
-		required=True
+		required=False
 	)
 	
 	
