@@ -1,10 +1,10 @@
 <odoo>
     <data>
 
-        <record id="stock_picking_form_new_hdesk" model="ir.ui.view">
-            <field name="name">stock.picking.form.new.hdesk</field>
+        <record id="stock_picking_form_new" model="ir.ui.view">
+            <field name="name">stock.picking.form.new</field>
             <field name="model">stock.picking</field>
-            <field name="inherit_id" ref="stock_picking_form_new"/>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
 
                 
@@ -16,10 +16,10 @@
         </record>
 
 		
-        <record id="purchase_order_form_new_hdesk" model="ir.ui.view">
-            <field name="name">purchase.order.form.new.hdesk</field>
+        <record id="purchase_order_form_new" model="ir.ui.view">
+            <field name="name">purchase.order.form.new</field>
             <field name="model">purchase.order</field>
-            <field name="inherit_id" ref="purchase_order_form_new"/>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
 
 
@@ -97,10 +97,10 @@
 
 
 
-        <record id="sale_order_form_new_hdesk" model="ir.ui.view">
-            <field name="name">sale.order.form.new.hdesk</field>
+        <record id="sale_order_form_new" model="ir.ui.view">
+            <field name="name">sale.order.form.new</field>
             <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale_order_form_new"/>
+            <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
 
 
@@ -112,10 +112,10 @@
         </record>
 
 
-        <record id="mrp_production_form_view_new_hdesk" model="ir.ui.view">
-            <field name="name">mrp.production.form.new.hdesk</field>
+        <record id="mrp_production_form_view_new" model="ir.ui.view">
+            <field name="name">mrp.production.form.new</field>
             <field name="model">mrp.production</field>
-            <field name="inherit_id" ref="mrp_production_form_view_new"/>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
             <field name="arch" type="xml">
 
 
