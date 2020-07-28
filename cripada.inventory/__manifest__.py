@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Personalizaciones Cripada",
+    'name': "Cripada - Inventory",
 
     'summary': """
         Módulo de personalizaciones de Purchase, Sale, y Stock para Cripada S.A.""",

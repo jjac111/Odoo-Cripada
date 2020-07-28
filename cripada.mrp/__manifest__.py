@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Personalizaciones Cripada",
+    'name': "Cripada - MRP",
 
     'summary': """
         Módulo de personalizaciones de Helpdesk, Purchase, Sale, MRP, y Stock para Cripada S.A.""",
