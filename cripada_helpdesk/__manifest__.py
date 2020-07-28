@@ -26,7 +26,7 @@
 		'stock',
 		'mrp',
 		'sale',
-		'cripada.inventory'
+		'cripada_inventory'
     ],
 
     # always loaded
