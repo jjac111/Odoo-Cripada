@@ -8,11 +8,11 @@
             <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
             <field name="arch" type="xml">
 
-                <xpath expr="//field[@name='routing_id']" position="after">
+                <xpath expr="//field[@name='personel']" position="after">
                     <field name="notes" widget="text"/>
                 </xpath>
 
-                <xpath expr="//field[@name='notes']" position="after">
+                <xpath expr="//field[@name='routing_id']" position="after">
                     <field name="personel" widget="many2many_tags"/>
                 </xpath>
 
