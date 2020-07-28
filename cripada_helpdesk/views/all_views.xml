@@ -64,7 +64,7 @@
             <field name="inherit_id" ref="helpdesk.helpdesk_team_view_kanban"/>
             <field name="arch" type="xml">
 
-					<xpath expr="//button[@name='516']" position="after">
+					<xpath expr="//button[@name='526']" position="after">
 						
 						<button class="btn btn-primary" name="url_querytree" type="object">Ir a QueryTree</button>
 						
