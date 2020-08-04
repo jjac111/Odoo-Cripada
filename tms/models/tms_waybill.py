@@ -178,11 +178,11 @@ class TmsWaybill(models.Model):
     expense_ids = fields.Many2many(
         'tms.expense', compute='_compute_expense_ids', string="Expenses")
     pay_up_to = fields.Monetary(
-        string='Podemos pagar hasta', store=True)
+        string='Podemos pagar hasta', store=True, readonly=True)
     guia_remision= fields.Char(
         string='Guía de remisión', store=True)
     toneladas= fields.Selection(
-        [('test',2.5)],
+        [((35, 0.7),'1')],
         string='Toneladas a cobrar', store=True)
 
     @api.depends('travel_ids')
