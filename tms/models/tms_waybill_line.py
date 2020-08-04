@@ -49,22 +49,30 @@ class TmsWaybillLine(models.Model):
             fpos = rec.waybill_id.partner_id.property_account_position_id
             fpos_tax_ids = fpos.map_tax(rec.product_id.taxes_id)
             rec.tax_ids = fpos_tax_ids
+            base_price = float(self.toneladas.split()[0])
+            km_price = float(self.toneladas.split()[1])
             if rec.product_id.name == 'Flete':
                 price = 0
                 for travel in rec.waybill_id.travel_ids:
-                    price += travel.unit_id.km_price * travel.distance_route + travel.unit_id.base_price # CALCULO DE PRECIO POR VIAJE SEGUN VEHICULO Y KMs
+                    price += km_price * travel.distance_route + base_price # CALCULO DE PRECIO POR VIAJE SEGUN TONELADAS Y KMs
+                price = ceil(price)
+                rec.unit_price = price if not price%5 else price + 5-price%5
+            elif rec.product_id.name == 'Viaje Falso':
+                price = 0
+                for travel in rec.waybill_id.travel_ids:
+                    price += base_price # CALCULO DE PRECIO POR VIAJE FALSO
                 price = ceil(price)
                 rec.unit_price = price if not price%5 else price + 5-price%5
             elif rec.product_id.name == 'Standby Horas':
                 price = 0
                 for travel in rec.waybill_id.travel_ids:
-                    price += travel.unit_id.km_price * travel.distance_route / 8 # CALCULO DE PRECIO DE STANDBY POR HORAS
+                    price += km_price * travel.distance_route / 8 # CALCULO DE PRECIO DE STANDBY POR HORAS
                 price = ceil(price)
                 rec.unit_price = price if not price%5 else price + 5 - price%5
             elif rec.product_id.name == 'Standby Dias':
                 price = 0
                 for travel in rec.waybill_id.travel_ids:
-                    price += travel.unit_id.km_price * travel.distance_route / 2 # CALCULO DE PRECIO DE STANDBY POR DIAS
+                    price += km_price * travel.distance_route / 2 # CALCULO DE PRECIO DE STANDBY POR DIAS
                 price = ceil(price)
                 rec.unit_price = price if not price%5 else price + 5 - price%5
             else:

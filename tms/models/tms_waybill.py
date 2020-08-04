@@ -182,7 +182,15 @@ class TmsWaybill(models.Model):
     guia_remision= fields.Char(
         string='Guía de remisión', store=True)
     toneladas= fields.Selection(
-        [((35, 0.7),'1')],
+        [('35 0.70','1'),
+         ('55 0.89','2'),
+         ('62 0.99','3'),
+         ('70 1.10','5'),
+         ('81 1.25','7.5'),
+         ('90 1.37','10'),
+         ('115 1.63','12'),
+         ('135 2.10','15'),
+        ],
         string='Toneladas a cobrar', store=True)
 
     @api.depends('travel_ids')
