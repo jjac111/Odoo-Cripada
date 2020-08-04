@@ -49,8 +49,8 @@ class TmsWaybillLine(models.Model):
             fpos = rec.waybill_id.partner_id.property_account_position_id
             fpos_tax_ids = fpos.map_tax(rec.product_id.taxes_id)
             rec.tax_ids = fpos_tax_ids
-            base_price = float(self.toneladas.split()[0])
-            km_price = float(self.toneladas.split()[1])
+            base_price = float(rec.waybill_id.toneladas.split()[0])
+            km_price = float(rec.waybill_id.toneladas.split()[1])
             if rec.product_id.name == 'Flete':
                 price = 0
                 for travel in rec.waybill_id.travel_ids:
