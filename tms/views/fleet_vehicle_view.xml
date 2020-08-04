@@ -71,12 +71,6 @@
                             </div>
                         </group>
                     </page>
-					<page string="Pricing Options">
-                        <group string="Pricing Options">
-                            <field name="base_price"/>
-                            <field name="km_price"/>
-                        </group>
-                    </page>
                     <page string="Extra Data">
                         <group>
                             <field colspan="4" context="{'default_vehicle_id': active_id, 'active_model_base': active_model}" name="unit_extradata" nolabel="1">

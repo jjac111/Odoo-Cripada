@@ -38,16 +38,6 @@ class FleetVehicle(models.Model):
         'res.partner', string='Insurance Supplier')
     insurance_days_to_expire = fields.Integer(
         compute='_compute_insurance_days_to_expire', string='Days to expire')
-    base_price = fields.Float(
-        string='Costo de arranque - $',
-        store=True,
-        required=True
-    )
-    km_price = fields.Float(
-        string='Costo por Km de viaje - $',
-        store=True,
-        required=True
-    )
 
     @api.depends('insurance_expiration')
     def _compute_insurance_days_to_expire(self):
