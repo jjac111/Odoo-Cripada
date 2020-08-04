@@ -306,7 +306,7 @@ class TmsWaybill(models.Model):
     def _compute_amount_freight(self):
         for rec in self:
             rec.amount_freight = rec._compute_amount_all('freight')
-            rec.pay_up_to = rec.amount_freight * 0.58 # SE CALCULA EL CAMPO "PODEMOS PAGAR HASTA"
+            
 
     @api.depends('waybill_line_ids')
     def _compute_amount_move(self):
@@ -379,6 +379,7 @@ class TmsWaybill(models.Model):
             for tax in tax_grouped.values():
                 tax_lines += tax_lines.new(tax)
             waybill.tax_line_ids = tax_lines
+        self.pay_up_to = self.amount_freight * 0.58 # SE CALCULA EL CAMPO "PODEMOS PAGAR HASTA"
 
     @api.multi
     def action_cancel_draft(self):
