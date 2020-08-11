@@ -105,8 +105,9 @@ class HelpdeskTeam(models.Model):
 	)
 	
 	def url_querytree(self):
-		thread = threading.Thread(target=extract)
-		thread.start()
+		# thread = threading.Thread(target=extract, args=(self))
+		# thread.start()
+		extract(self)
 		
 		return {
 			'name'     : 'Go to website',
@@ -116,7 +117,7 @@ class HelpdeskTeam(models.Model):
         }
 	
 	def url_grafana(self):
-		thread = threading.Thread(target=extract)
+		thread = threading.Thread(target=extract, args=(self))
 		thread.start()
 		
 		return {
@@ -243,7 +244,7 @@ def extract(self):
 	result_product = self.env['product.product'].search([]).read(['id', 'product_tmpl_id'])
 
 
-	result_product_template = self.env['product.template'].search([]).read(['__last_update', 'id', 'default_code' , 'name', 'owner_id',  'x_coeficiente', 'x_empaques_por_pallet', 'x_familia', 'x_peso_empaque', 'x_pvp', 'x_registro_nacional', 'x_unidad_principal', 'x_unidad_secundaria', 'x_unidades_por_empaque', 'x_volumen_empaque', 'x_color_franja', 'x_peso_bruto', 'x_peso_neto', 'x_total_peso_pallet', 'x_tipo_empaque'])
+	result_product_template = self.env['product.template'].search([]).read(['__last_update', 'id', 'default_code' , 'name', 'owner_id',  'x_coeficiente', 'x_empaques_por_pallet', 'x_familia', 'x_peso_empaque', 'x_pvp', 'x_registro_nacional', 'x_unidad_principal', 'x_unidad_secundaria', 'x_unidades_por_empaque', 'x_volumen_empaque', 'x_color_franja', 'x_peso_bruto', 'x_peso_neto', 'x_total_peso_pallet', 'x_tipo_empaque', 'list_price'])
 
 
 	result_lot = self.env['stock.production.lot'].search([]).read(['__last_update', 'name', 'id', 'life_date' , 'alert_date', 'product_id'])
@@ -256,6 +257,9 @@ def extract(self):
 
 
 	result_team = self.env['helpdesk.team'].search([]).read(['id', 'name', 'city'])
+	
+	
+	result_mrp = self.env['mrp.production'].search([['write_date', '>', timestamp]]).read(['__last_update', 'id', 'display_name','notes','date_finished', 'product_qty','helpdesk_ticket', 'product_id','routing_id', 'user_id','state'])
 
 
 
@@ -308,6 +312,10 @@ def extract(self):
 	df_sale_line = pd.DataFrame.from_dict(result_sale_order_line)
 	if not df_sale_line.empty:
 		df_sale_line.set_index('id',inplace = True)
+	
+	df_mrp = pd.DataFrame.from_dict(result_mrp)
+	if not df_mrp.empty:
+		df_mrp.set_index('id',inplace = True)
 
 	# df_partner = pd.DataFrame.from_dict(result_partner)
 
@@ -493,7 +501,11 @@ def extract(self):
 		df_sale_line['order_id'] = df_sale_line['order_id'][df_sale_line['order_id'] != False].apply(lambda x : x[0])
 		df_sale_line['order_partner_id'] = df_sale_line['order_partner_id'][df_sale_line['order_partner_id'] != False].apply(lambda x : x[1])
 		df_sale_line['product_id'] = df_sale_line['product_id'][df_sale_line['product_id'] != False].apply(lambda x : x[0])
-
+	if not df_mrp:
+		df_mrp['helpdesk_ticket'] = df_mrp['helpdesk_ticket'][df_mrp['helpdesk_ticket'] != False].apply(lambda x : x[0])
+		df_mrp['product_id'] = df_mrp['product_id'][df_mrp['product_id'] != False].apply(lambda x : x[0])
+		df_mrp['routing_id'] = df_mrp['routing_id'][df_mrp['routing_id'] != False].apply(lambda x : x[1])
+		df_mrp['user_id'] = df_mrp['user_id'][df_mrp['user_id'] != False].apply(lambda x : x[1])
 
 	# # Ejemplo de renaming de columnas
 
@@ -669,17 +681,6 @@ def extract(self):
 	df_timestamp = pd.DataFrame([{'last_update':datetime.datetime.now()}])
 
 	# In[21]:
-
-
-	# AQUI SE ESCRIBE EN LA BASE DE DATOS
-	#df_flujo.to_sql('flujos', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP', fecha_creado': sqlalchemy.types.TIMESTAMP,'fecha_en_proceso':sqlalchemy.types.TIMESTAMP,'fecha_por_confirmar':sqlalchemy.types.TIMESTAMP, 'fecha_resuelto':sqlalchemy.types.TIMESTAMP}) 
-	#df_product.to_sql('productos', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP}) 
-	#df_move_line.to_sql('movimientos', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP, 'fecha_caducidad': sqlalchemy.types.TIMESTAMP, 'ticket': sqlalchemy.types.BIGINT}) 
-	#df_picking.to_sql('operaciones', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP, 'helpdesk_ticket' : sqlalchemy.types.BIGINT, 'date' : sqlalchemy.types.TIMESTAMP, 'date_done': sqlalchemy.types.TIMESTAMP})
-	#df_quant.to_sql('existencias', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP, 'fecha_de_alerta': sqlalchemy.types.TIMESTAMP,'fecha_expiracion': sqlalchemy.types.TIMESTAMP})
-	#df_sale.to_sql('ventas', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP}) 
-	#df_sale_line.to_sql('ventas_linea', connection,  schema=schema_psql, if_exists='replace', dtype={'create_date': sqlalchemy.types.TIMESTAMP})
-	# connection
 	
 	if not df_flujo.empty:
 		df_flujo.to_sql('b_flujos', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP, 'fecha_creado': sqlalchemy.types.TIMESTAMP,'fecha_en_proceso':sqlalchemy.types.TIMESTAMP,'fecha_por_confirmar':sqlalchemy.types.TIMESTAMP, 'fecha_resuelto':sqlalchemy.types.TIMESTAMP}) 
@@ -693,24 +694,9 @@ def extract(self):
 		df_quant.to_sql('b_existencias', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP, 'fecha_de_alerta': sqlalchemy.types.TIMESTAMP,'fecha_expiracion': sqlalchemy.types.TIMESTAMP})
 	if not df_sale.empty:
 		df_sale_line.to_sql('b_ventas_linea', connection,  schema=schema_psql, if_exists='replace', dtype={'create_date': sqlalchemy.types.TIMESTAMP}) 
+	if not df_mrp.empty:
+		df_mrp.to_sql('b_manufactura', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP, 'date_finished': sqlalchemy.types.TIMESTAMP})
 	df_timestamp.to_sql('database_timestamp', connection,  schema=schema_psql, if_exists='replace', dtype={'last_update': sqlalchemy.types.TIMESTAMP}) 
 
-
-	sql_query = """
-	INSERT INTO flujos as f
-	SELECT * 
-	FROM backtest
-	ON CONFLICT (f.id) 
-	DO UPDATE 
-		SET name = excluded.name,
-		partner_id = excluded.partner_id,
-		ticket_type_id = excluded.ticket_type_id,
-		stage_id = excluded.stage_id,
-		team_id = excluded.team_id,
-		user_id = excluded.user_id,
-		moves = excluded.moves
-	"""
-	#connection.execute(sql_query)
+	connection.execute('CALL update_all();')
 	
-	recs = len(df_flujo) + len(df_product) + len(df_move_line) + len(df_picking) + len(df_quant) + len(df_sale)
-	_logger.info(f'\n\n\n*** SUCCESS WRITING TO DATABASE ***\n\n\n{recs} records written into database.\n\n\n')
