@@ -501,7 +501,7 @@ def extract(self):
 		df_sale_line['order_id'] = df_sale_line['order_id'][df_sale_line['order_id'] != False].apply(lambda x : x[0])
 		df_sale_line['order_partner_id'] = df_sale_line['order_partner_id'][df_sale_line['order_partner_id'] != False].apply(lambda x : x[1])
 		df_sale_line['product_id'] = df_sale_line['product_id'][df_sale_line['product_id'] != False].apply(lambda x : x[0])
-	if not df_mrp:
+	if not df_mrp.empty:
 		df_mrp['helpdesk_ticket'] = df_mrp['helpdesk_ticket'][df_mrp['helpdesk_ticket'] != False].apply(lambda x : x[0])
 		df_mrp['product_id'] = df_mrp['product_id'][df_mrp['product_id'] != False].apply(lambda x : x[0])
 		df_mrp['routing_id'] = df_mrp['routing_id'][df_mrp['routing_id'] != False].apply(lambda x : x[1])
@@ -539,7 +539,8 @@ def extract(self):
 							   'x_peso_bruto' : 'peso_bruto',
 							   'x_peso_neto':'peso_neto',
 							   'x_total_peso_pallet' : 'total_peso_pallet',
-							   'x_tipo_empaque':'tipo_empaque'}, inplace=True)
+							   'x_tipo_empaque':'tipo_empaque',
+							   'list_price': 'precio'}, inplace=True)
 
 	if not df_quant.empty:
 		df_quant.rename(columns= {'display_name':'nombre',
@@ -677,7 +678,7 @@ def extract(self):
 		df_move_line = df_move_line[['move_id','product_id','lot_id','owner_id','picking_id','origen','destino','qty_done','remaining_stock','__last_update','lote','fecha_caducidad','ticket','empaques','unidades_sueltas']]
 		
 	if not df_product.empty:
-		df_product = df_product[['referencia','nombre','propietario','coeficiente','empaques_por_pallet','familia','peso_por_empaque','pvp','registro_nacional','presentacion','unidad_secundaria','unidades_por_empaque','volumen_por_empaque','color_de_franja','peso_bruto','peso_neto','total_peso_pallet','tipo_empaque','__last_update']]
+		df_product = df_product[['referencia','nombre','propietario','coeficiente','empaques_por_pallet','familia','peso_por_empaque','pvp','registro_nacional','presentacion','unidad_secundaria','unidades_por_empaque','volumen_por_empaque','color_de_franja','peso_bruto','peso_neto','total_peso_pallet','tipo_empaque','__last_update', 'precio']]
 	df_timestamp = pd.DataFrame([{'last_update':datetime.datetime.now()}])
 
 	# In[21]:
