@@ -647,6 +647,8 @@ def extract(self):
 		df_picking.replace(False, np.nan, inplace=True);
 	if not df_sale.empty:
 		df_sale['guia_remision'].replace(False,np.nan, inplace=True)
+	if not df_mrp.empty:
+		df_mrp.replace(False, np.nan, inplace = True)
 
 
 	# In[18]:
