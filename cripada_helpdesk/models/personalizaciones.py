@@ -117,15 +117,15 @@ class HelpdeskTeam(models.Model):
         }
 	
 	def url_grafana(self):
-		thread = threading.Thread(target=extract, args=(self))
-		thread.start()
-		
-		return {
-			'name'     : 'Go to website',
-            'type'     : 'ir.actions.act_url',
-            'target'   : 'new',
-            "url": "http://138.128.244.200:3000"
-        }
+		# thread = threading.Thread(target=extract, args=(self))
+		# thread.start()
+		return {'value': {}, 'warning': {'title': 'Warning Title Here', 'message': 'Your warning message here'}}
+		# return {
+			# 'name'     : 'Go to website',
+            # 'type'     : 'ir.actions.act_url',
+            # 'target'   : 'new',
+            # "url": "http://138.128.244.200:3000"
+        # }
 	
 
 class PurchaseOrder(models.Model):
