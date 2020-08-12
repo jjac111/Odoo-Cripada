@@ -701,12 +701,19 @@ def extract(self):
 		df_mrp.to_sql('b_manufactura', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP, 'date_finished': sqlalchemy.types.TIMESTAMP})
 	
 
-	query = '''
+	query1 = '''
 	BEGIN TRANSACTION;
 	CALL update_all();
 	COMMIT TRANSACTION;
 	'''
-	connection.execute(query)
+	connection.execute(query1)
+	
+	query2 = '''
+	BEGIN TRANSACTION;
+	CALL create_historico_existencias();
+	COMMIT TRANSACTION;
+	'''
+	connection.execute(query2)
 	
 	df_timestamp.to_sql('database_timestamp', connection,  schema=schema_psql, if_exists='replace', dtype={'last_update': sqlalchemy.types.TIMESTAMP}) 
 	
