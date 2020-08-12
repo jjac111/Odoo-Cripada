@@ -341,6 +341,7 @@ def extract(self):
 		cities = []
 		for i, flujo in df_flujo.iterrows():
 			team_id = flujo['team_id'][0]
+			raise Exception(f'team_id: {team_id}\ndf_team: {len(df_team)}\ndf_team index: {df_team.index}')
 			city = df_team.loc[team_id]['city']
 			cities.append(city)
 
