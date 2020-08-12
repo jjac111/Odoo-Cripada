@@ -699,7 +699,14 @@ def extract(self):
 		df_sale_line.to_sql('b_ventas_linea', connection,  schema=schema_psql, if_exists='replace', dtype={'create_date': sqlalchemy.types.TIMESTAMP}) 
 	if not df_mrp.empty:
 		df_mrp.to_sql('b_manufactura', connection,  schema=schema_psql, if_exists='replace', dtype={'__last_update': sqlalchemy.types.TIMESTAMP, 'date_finished': sqlalchemy.types.TIMESTAMP})
-	df_timestamp.to_sql('database_timestamp', connection,  schema=schema_psql, if_exists='replace', dtype={'last_update': sqlalchemy.types.TIMESTAMP}) 
+	
 
-	connection.execute('CALL update_all();')
+	query = '''
+	BEGIN TRANSACTION;
+	CALL update_all();
+	COMMIT TRANSACTION;
+	'''
+	connection.execute(query)
+	
+	df_timestamp.to_sql('database_timestamp', connection,  schema=schema_psql, if_exists='replace', dtype={'last_update': sqlalchemy.types.TIMESTAMP}) 
 	
