@@ -77,7 +77,7 @@ class StockPicking(models.Model):
 		for record in self:
 			peso = 0
 			for line in record.move_lines:
-				cantidad = line.product_uom_qty
+				cantidad = line.quantity_done
 				producto = line.product_id
 				
 				if producto.x_unidades_por_empaque <= 0: continue
