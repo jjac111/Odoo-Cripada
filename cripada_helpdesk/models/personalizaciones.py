@@ -332,7 +332,7 @@ def extract(self):
 
 	# Asigna los valores de tickets en picking al número del ticket solamente: [4, Adama|OIMP] -> 4
 	if not df_picking.empty:
-		df_picking['helpdesk_ticket'] = df_picking['helpdesk_ticket'][df_picking['helpdesk_ticket'] != False].apply(lambda x: x[0])
+		df_picking['helpdesk_ticket'] = df_picking['helpdesk_ticket'][df_picking['helpdesk_ticket'] != False].apply(lambda x: int(x[0]))
 
 
 	# In[5]:
