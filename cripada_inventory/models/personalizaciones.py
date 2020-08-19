@@ -78,6 +78,8 @@ class StockPicking(models.Model):
 			peso = 0
 			for line in record.move_line_ids:
 				cantidad = line.product_qty
+				if cantidad <= 0:
+					cantidad = line.qty_done
 				producto = line.product_id
 				
 				if producto.x_unidades_por_empaque <= 0: continue
