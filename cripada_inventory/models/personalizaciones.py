@@ -71,7 +71,7 @@ class StockPicking(models.Model):
 	)
 	
 	
-	@api.depends('move_line_ids')
+	@api.depends('move_lines')
 	def calcular_peso(self):
 		
 		for record in self:
