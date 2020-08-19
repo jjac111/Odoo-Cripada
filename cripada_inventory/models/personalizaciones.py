@@ -80,7 +80,7 @@ class StockPicking(models.Model):
 				cantidad = line.product_qty
 				producto = line.product_id
 				
-				if producto.x_unidades_por_empaque =< 0: continue
+				if producto.x_unidades_por_empaque <= 0: continue
 				
 				peso += (cantidad / producto.x_unidades_por_empaque) * producto.x_peso_empaque
 			
