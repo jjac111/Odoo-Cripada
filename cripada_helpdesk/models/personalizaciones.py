@@ -473,6 +473,7 @@ def extract(self):
 		df_flujo['partner_id'] = df_flujo['partner_id'][df_flujo['partner_id'] != False].apply(lambda x: x[1])
 		df_flujo['stage_id'] = df_flujo['stage_id'][df_flujo['stage_id'] != False].apply(lambda x: x[1])
 		df_flujo['team_id'] = df_flujo['team_id'][df_flujo['team_id'] != False].apply(lambda x: x[1])
+		raise Exception(f'Tipo: {type(df_flujo['helpdesk_ticket][0])} \n Data: {df_flujo['helpdesk_ticket][0]}')
 	if not df_product.empty:	
 		df_product['owner_id'] = df_product['owner_id'][df_product['owner_id'] != False].apply(lambda x: x[1])
 	if not df_move_line.empty:
