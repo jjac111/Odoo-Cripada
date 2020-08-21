@@ -73,7 +73,6 @@ class StockPicking(models.Model):
 		string='Volumen Total',
 		help='Volumen total de productos en esta operación.',
 		store=True,
-		
 	)
 	
 	
