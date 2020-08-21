@@ -74,6 +74,7 @@ class StockPicking(models.Model):
 		string='Volumen Total',
 		help='Volumen total de productos en esta operación.',
 		store=True,
+		required=False,
 	)
 
 	nombre_operario = fields.One2many(
