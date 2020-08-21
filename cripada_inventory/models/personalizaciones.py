@@ -112,8 +112,8 @@ class StockPicking(models.Model):
 
 	@api.depends('move_line_ids')
 	def calcular_volumen(self):
-		
-		
+
+		volumen_total = 0
 		
 
 class StockMoveLine(models.Model):
