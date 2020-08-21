@@ -51,12 +51,6 @@ class SaleOrder(models.Model):
 		# store=True,
 	# )
 
-class Contacts(models.Model):
-	_inherit = 'res.partner'
-	
-	codigo_cliente = fields.Char(
-		string = 'Código de Cliente'
-	)
 		
 class StockPicking(models.Model):
 	_inherit = "stock.picking"
