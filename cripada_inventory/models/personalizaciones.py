@@ -92,6 +92,36 @@ class StockPicking(models.Model):
 				line.peso += (cantidad / producto.x_unidades_por_empaque) * producto.x_peso_empaque
 			
 			record.peso_total = peso
+
+	@api.depends('move_line_ids')
+	def calcular_peso(self):
+		
+		for record in self:
+			peso = 0
+			for line in record.move_lines_ids:
+				
+				cantidad = line.product_qty
+				producto = line.product_id
+				
+				if producto.x_unidades_por_empaque <= 0: continue
+				
+				line.peso += (cantidad / producto.x_unidades_por_empaque) * producto.x_peso_empaque
+			
+			record.peso_total = peso
+
+
+	@api.depends('move_line_ids')
+	def calcular_volumen(self):
+		
+		for record in self:
+			volumen = 0
+			for line in record.move_lines_ids:
+			cantidad = line.product_qty
+			producto = line.product_id
+			
+			peso += (cantidad / producto.x_unidades_por_empaque) * producto.x_peso_empaque
+		
+		record.volumen_total = volumen
 		
 
 class StockMoveLine(models.Model):
