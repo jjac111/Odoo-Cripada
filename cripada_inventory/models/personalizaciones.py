@@ -14,7 +14,13 @@ import math
 import logging
 _logger = logging.getLogger(__name__) 
 
+class Contactos(models.Model):
+	_inherit = 'res.partner'
 
+	codigo = fields.Char(
+		string="Codigo Cliente",
+		store=True,
+	)
 
 class PurchaseOrder(models.Model):
 	_inherit = 'purchase.order'
