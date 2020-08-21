@@ -46,8 +46,7 @@ class SaleOrder(models.Model):
 class ResPartner(models.Model):
 	_inherit = 'res.partner'
 
-
-	codigo_cli = fields.Char(
+	codigo_cliente = fields.Char(
 		string="Codigo Cliente",
 		store=True,
 	)
