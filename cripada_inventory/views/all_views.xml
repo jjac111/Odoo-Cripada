@@ -1,5 +1,16 @@
 <odoo>
     <data>
+         <record id="res_partner_form_new" model="ir.ui.view">
+            <field name="name">res.partner.new</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="res.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="codigo" widget="char"/>
+                </xpath>
+            </field>
+        </record>
 
         <record id="stock_picking_form_new" model="ir.ui.view">
             <field name="name">stock.picking.form.new</field>
