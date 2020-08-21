@@ -75,16 +75,17 @@ class StockPicking(models.Model):
 	def calcular_peso(self):
 		
 		for record in self:
-			peso = 0
+			
 			for line in record.move_line_ids:
+				peso = 0
 				cantidad = line.qty_done
 				producto = line.product_id
 				
-				if record.producto.x_unidades_por_empaque <= 0: continue
+				if line.producto.x_unidades_por_empaque <= 0: continue
 				
-				record.peso += (record.cantidad / record.producto.x_unidades_por_empaque) * record.producto.x_peso_empaque
+				line.peso += (line.cantidad / line.producto.x_unidades_por_empaque) * line.producto.x_peso_empaque
 			
-			record.peso_total = peso
+			    line.peso_total = peso
 		
 
 class StockMoveLine(models.Model):
