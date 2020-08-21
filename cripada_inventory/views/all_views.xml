@@ -1,17 +1,17 @@
 <odoo>
     <data>
 
-        <record id="res_partner_form_new" model="ir.ui.view">
-            <field name="name">res.partner.form.new</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="arch" type="xml">
+        <!-- <record id="res_partner_form_new" model="ir.ui.view"> -->
+            <!-- <field name="name">res.partner.form.new</field> -->
+            <!-- <field name="model">res.partner</field> -->
+            <!-- <field name="inherit_id" ref="base.view_partner_form"/> -->
+            <!-- <field name="arch" type="xml"> -->
 
-                <xpath expr="//field[@name='parent_id']" position="after">
-                    <field name="codigo_cliente" widget="char"/>
-                </xpath>
-            </field>
-        </record>
+                <!-- <xpath expr="//field[@name='parent_id']" position="after"> -->
+                    <!-- <field name="codigo_cliente" widget="char"/> -->
+                <!-- </xpath> -->
+            <!-- </field> -->
+        <!-- </record> -->
 
         <record id="stock_picking_form_new" model="ir.ui.view">
             <field name="name">stock.picking.form.new</field>
