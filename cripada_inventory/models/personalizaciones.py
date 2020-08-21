@@ -74,7 +74,7 @@ class StockPicking(models.Model):
 		string='Volumen Total',
 		help='Volumen total de productos en esta operación.',
 		store=True,
-		required=False,
+
 	)
 
 	nombre_operario = fields.One2many(
@@ -82,6 +82,7 @@ class StockPicking(models.Model):
 		string='Nombre Operario Encargado',
 		help='Nombre del Trabajador que sera el operario encargado',
 		store=True,
+		required=False,
 	)
 	
 	
