@@ -77,7 +77,7 @@ class StockPicking(models.Model):
 
 	)
 
-	nombre_operario = fields.One2many(
+	nombre_operario = fields.Many2one(
 		'hr.employee',
 		string='Nombre Operario Encargado',
 		help='Nombre del Trabajador que sera el operario encargado',
