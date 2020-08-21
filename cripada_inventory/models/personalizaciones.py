@@ -14,7 +14,7 @@ import math
 import logging
 _logger = logging.getLogger(__name__) 
 
-class Contacts(models.Model):
+class Partners(models.Model):
 	_inherit = 'res.partner'
 
 
