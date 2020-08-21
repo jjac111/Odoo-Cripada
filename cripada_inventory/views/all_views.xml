@@ -16,14 +16,21 @@
                 <xpath expr="//field[@name='owner_id']" position="after">
                     <field name="guia_remision" widget="char"/>
                 </xpath>
+
+                 <xpath expr="//field[@name='picking_type_id']" position="after">
+                    <field name="nombre_operario" widget="char"/>
+                </xpath>
 				
-				<xpath expr="//field[@name='picking_type_id']" position="after">
+				<xpath expr="//field[@name='nombre_operario']" position="after">
                     <field name="peso_total" widget="float"/>
                 </xpath>
+
 
                 <xpath expr="//field[@name='peso_total']" position="after">
                     <field name="volumen_total" widget="float"/>
                 </xpath>
+
+
 
 
             </field>
