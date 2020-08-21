@@ -19,10 +19,6 @@
                     <field name="peso_total" widget="float"/>
                 </xpath>
 
-                <xpath expr="//field[@name='peso_total']" position="after">
-                    <field name="volumen_total" widget="float"/>
-                </xpath>
-
 
             </field>
         </record>
