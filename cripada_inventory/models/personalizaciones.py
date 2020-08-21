@@ -75,6 +75,12 @@ class StockPicking(models.Model):
 		help='Volumen total de productos en esta operación.',
 		store=True,
 	)
+	nombre_operario = fields.One2many(
+		'hr.employee'
+		string='Nombre Operario Encargado',
+		help='Nombre del Trabajador que sera el operario encargado',
+		store=True,
+	)
 	
 	
 	@api.depends('move_lines')
