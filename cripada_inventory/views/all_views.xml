@@ -18,7 +18,7 @@
                 </xpath>
 
                  <xpath expr="//field[@name='picking_type_id']" position="after">
-                    <field name="nombre_operario" widget="char"/>
+                    <field name="nombre_operario" widget="one2many"/>
                 </xpath>
 				
 				<xpath expr="//field[@name='nombre_operario']" position="after">
