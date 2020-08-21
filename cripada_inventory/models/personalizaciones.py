@@ -85,7 +85,7 @@ class StockPicking(models.Model):
 				
 				line.peso += (line.cantidad / line.producto.x_unidades_por_empaque) * line.producto.x_peso_empaque
 			
-			    peso_total = peso
+			record.peso_total = peso
 		
 
 class StockMoveLine(models.Model):
