@@ -17,6 +17,9 @@
 				
 				<xpath expr="//field[@name='picking_type_id']" position="after">
                     <field name="peso_total" widget="float"/>
+
+                <xpath expr="//field[@name='peso_total']" position="after">
+                    <field name="volumen_total" widget="float"/>
                 </xpath>
 
 
