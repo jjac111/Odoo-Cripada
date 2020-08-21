@@ -43,7 +43,7 @@ class SaleOrder(models.Model):
 		store=True,
 	)
 
-class Contacto(models.Model):
+class ResPartner(models.Model):
 	_inherit = 'res.partner'
 
 
