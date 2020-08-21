@@ -69,15 +69,21 @@ class StockPicking(models.Model):
 		store=True,
 		compute='calcular_peso'
 	)
+	volumen_total = fields.Float(
+		string='Volumen Total',
+		help='Volumen total de productos en esta operación.',
+		store=True,
+		compute='calcular_volumen'
+	)
 	
 	
-	@api.depends('move_line_ids')
+	@api.depends('move_lines')
 	def calcular_peso(self):
 		
 		for record in self:
-			
-			for line in record.move_line_ids:
-				peso = 0
+			peso = 0
+			for line in record.move_lines:
+				
 				cantidad = line.qty_done
 				producto = line.product_id
 				
