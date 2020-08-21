@@ -43,7 +43,7 @@ class SaleOrder(models.Model):
 		store=True,
 	)
 
-class ResPartner(models.Model):
+class Contactos(models.Model):
 	_inherit = 'res.partner'
 
 	codigo_cliente = fields.Char(
