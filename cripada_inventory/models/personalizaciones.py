@@ -67,13 +67,13 @@ class StockPicking(models.Model):
 		string='Peso Total',
 		help='Peso total de productos en esta operación.',
 		store=True,
-		compute='calcular_peso'
+		compute='calcular_peso',
 	)
 	volumen_total = fields.Float(
 		string='Volumen Total',
 		help='Volumen total de productos en esta operación.',
 		store=True,
-		compute='calcular_volumen'
+		compute='calcular_volumen',
 	)
 	
 	
