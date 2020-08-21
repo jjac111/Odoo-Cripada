@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Cripada - Inventory",
+	'name': "Cripada - Contacts",
 
 	'summary': """
-		Módulo de personalizaciones de Purchase, Sale, y Stock para Cripada S.A.""",
+		Módulo de personalizaciones de Contactos para Cripada S.A.""",
 
 	'description': """
 		Este módulo incopora las personalizaciones requeridas por Cripada para el funcionamiento de Odoo.
@@ -21,9 +21,7 @@
 	# any module necessary for this one to work correctly
 	'depends': [
 		'base',
-		'purchase',
-		'stock',
-		'sale',
+		'contacts'
 	],
 
 	# always loaded
