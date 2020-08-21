@@ -78,12 +78,12 @@ class StockPicking(models.Model):
 	)
 	
 
-	@api.depends('move_line_ids')
+	@api.depends('move_lines')
 	def calcular_peso(self):
 		
 		for record in self:
 			peso = 0
-			for line in record.move_lines_ids:
+			for line in record.move_lines:
 				
 				cantidad = line.product_qty
 				producto = line.product_id
@@ -101,8 +101,8 @@ class StockPicking(models.Model):
 		for record in self:
 			volumen = 0
 			for line in record.move_line_ids
-				volumen = 0
-		record.voulmen_total = 0
+				line.volumen = 0
+		record.voulmen_total = volumen
 		
 		
 
